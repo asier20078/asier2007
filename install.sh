@@ -6,12 +6,21 @@ sudo apt update && sudo apt upgrade -y
 echo "Instalando dependencias..."
 sudo apt install libvlc-dev libvlccore-dev git cmake -y
 
-# Clonar el repositorio de RImusic (reemplaza la URL con la correcta)
-echo "Clonando RImusic..."
-git clone https://github.com/asier20078/asier2007.git
+# Verificar si RImusic ya está clonado
+if [ ! -d "RImusic" ]; then
+    echo "Clonando RImusic..."
+    git clone https://github.com/asier20078/asier2007.git RImusic
+else
+    echo "RImusic ya está clonado. Actualizando..."
+    cd RImusic
+    git pull origin main  # Actualiza a la última versión
+    cd ..
+fi
 
 # Compilar RImusic
-cd RImusic/build
+cd RImusic
+mkdir -p build  # Crea el directorio build si no existe
+cd build
 cmake ..
 make
 
