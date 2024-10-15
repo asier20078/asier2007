@@ -17,10 +17,12 @@ else
     cd ..
 fi
 
+
 # Compilar RImusic
-cd RImusic
-mkdir -p build  # Crea el directorio build si no existe
+cd ~/asier2007/RImusic
+mkdir build
 cd build
+
 cmake ..
 make
 
